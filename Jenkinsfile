@@ -2,8 +2,17 @@ pipeline {
   agent any
   stages {
     stage('BUILD') {
-      steps {
-        sh 'echo \'hello\''
+      parallel {
+        stage('BUILD') {
+          steps {
+            sh 'echo \'hello\''
+          }
+        }
+        stage('') {
+          steps {
+            sh 'pwdls -la'
+          }
+        }
       }
     }
   }
