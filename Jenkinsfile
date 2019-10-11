@@ -14,9 +14,14 @@ pipeline {
             sh './configure'
           }
         }
-        stage('') {
+        stage('gcc') {
           steps {
             sh 'apt add gcc'
+          }
+        }
+        stage('id') {
+          steps {
+            sh 'id; whoaim'
           }
         }
       }
