@@ -5,12 +5,13 @@ pipeline {
       agent {
         docker {
           image 'alpine'
+          args '-u 0'
         }
 
       }
       steps {
         sh 'id'
-        sh 'apk add gcc'
+        sh 'apk add gcc;'
         sh './configure'
       }
     }
