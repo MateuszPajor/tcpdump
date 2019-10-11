@@ -2,14 +2,23 @@ pipeline {
   agent any
   stages {
     stage('BUILD') {
-      agent {
-        docker {
-          image 'alpine'
-        }
+      parallel {
+        stage('BUILD') {
+          agent {
+            docker {
+              image 'alpine'
+            }
 
-      }
-      steps {
-        sh './configure'
+          }
+          steps {
+            sh './configure'
+          }
+        }
+        stage('') {
+          steps {
+            sh 'apt add gcc'
+          }
+        }
       }
     }
   }
